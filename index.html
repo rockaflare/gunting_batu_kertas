@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+        <title>Gunting Batu Kertas</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            const choices = ["Gunting", "Batu", "Kertas"];
+            const results = [" kalah oleh ", " menang dari "];
+            let playerScore = 0;
+            let comScore = 0;
+            
+            function computerPlay(){
+                return choices[Math.floor(Math.random() * Math.floor(3))]; //get random choices
+            }
+            
+            function playRound(playerHand, computerHand){
+                let result;
+                if (playerHand === choices[0]) {
+                    if (computerHand === choices[0]) {
+                        result = "Skor seri! Kamu dan komputer menggunakan Gunting!";
+                    } else if(computerHand === choices[1]) {
+                        comScore++;
+                        result = `Kamu kalah! ${playerHand} ${results[0]} ${computerHand} ! Skor: Kamu = ${playerScore} vs Computer = ${comScore}`;
+                    } else if(computerHand === choices[2]) {
+                        playerScore++;
+                        result = `Kamu menang! ${playerHand} ${results[1]} ${computerHand} ! Skor: Kamu = ${playerScore} vs Computer = ${comScore}`;
+                    } 
+                } else if(playerHand === choices[1]) {
+                    if (computerHand === choices[1]) {
+                        result = "Skor seri! Kamu dan komputer menggunakan Batu!";
+                    } else if(computerHand === choices[0]) {
+                        comScore++;
+                        result = `Kamu kalah! ${playerHand} ${results[0]} ${computerHand} ! Skor: Kamu = ${playerScore} vs Computer = ${comScore}`;
+                    } else if(computerHand === choices[2]) {
+                        playerScore++;
+                        result = `Kamu menang! ${playerHand} ${results[1]} ${computerHand} ! Skor: Kamu = ${playerScore} vs Computer = ${comScore}`;
+                    } 
+                } else if(playerHand === choices[2]) {
+                    if (computerHand === choices[2]) {
+                        result = "Skor seri! Kamu dan komputer menggunakan Kertas!";
+                    } else if(computerHand === choices[1]) {
+                        comScore++;
+                        result = `Kamu kalah! ${playerHand} ${results[0]} ${computerHand} ! Skor: Kamu = ${playerScore} vs Computer = ${comScore}`;
+                    } else if(computerHand === choices[0]) {
+                        playerScore++;
+                        result = `Kamu menang! ${playerHand} ${results[1]} ${computerHand} ! Skor: Kamu = ${playerScore} vs Computer = ${comScore}`;
+                    } 
+                }
+                return result;
+            }
+
+            function gameStart(){
+                let playerselection = prompt("1. Gunting \n2. Batu \n3. Kertas \nApa pilihanmu? ");
+                let pemain = choices[playerselection-1];
+                alert(playRound(pemain, computerPlay()));
+            }
+
+        </script>
+    </body>
+</html>
