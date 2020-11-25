@@ -1,0 +1,1 @@
+This is a rock-paper-scissor game in bahasa. Using simple javascript.
